@@ -63,6 +63,32 @@ streamlit run app.py
 - `requirements.txt` – 의존성
 - `.env.example` – .env 예시
 
+## GitHub 레포지토리 만들고 푸시하기
+
+1. [GitHub](https://github.com/new)에서 **New repository**로 새 저장소 생성 (이름 예: `interview-sample`).
+2. **Initialize with README**는 체크하지 않습니다 (이미 로컬에 코드가 있음).
+3. 터미널에서 아래 실행 (`YOUR_USERNAME`, `REPO_NAME`을 본인 값으로 바꾸세요):
+
+```bash
+cd "c:\Users\user\Desktop\interview sample"
+git remote add origin https://github.com/YOUR_USERNAME/REPO_NAME.git
+git branch -M main
+git push -u origin main
+```
+
+- GitHub CLI(`gh`)가 있다면: `gh repo create REPO_NAME --private --source=. --push` 로 한 번에 생성·푸시 가능합니다.
+
+## 배포 (Vercel vs Streamlit)
+
+- **이 프로젝트는 Streamlit(Python 서버) 앱**입니다. Vercel은 정적 사이트·Next.js·서버리스 함수 위주라 **Streamlit 앱을 그대로 올리기에는 적합하지 않습니다.**
+- **권장: Streamlit Community Cloud** (무료, GitHub 연동)
+  1. [share.streamlit.io](https://share.streamlit.io) 접속 후 GitHub 로그인.
+  2. **New app** → 이 레포지토리 선택, Branch `main`, Main file path `app.py`.
+  3. **Advanced settings**에서 Secrets에 `OPENAI_API_KEY` 추가.
+  4. Deploy 후 제공되는 URL로 접속하면 됩니다.
+
+- 그 외 **Railway**, **Render** 등에서도 Python 앱으로 배포 가능합니다 (빌드 명령: `pip install -r requirements.txt`, 실행: `streamlit run app.py --server.port $PORT`).
+
 ## 참고
 
 - 음성 인식은 브라우저/Google API를 사용합니다. 한글 인식이 안 되면 영어로 답변해 보세요.
