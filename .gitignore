@@ -6,4 +6,6 @@ venv/
 *.log
 sessions/
 .claude/
-interview-app/
+node_modules/
+.next/
+interview-app/.env.local

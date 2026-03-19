@@ -78,16 +78,28 @@ git push -u origin main
 
 - GitHub CLI(`gh`)가 있다면: `gh repo create REPO_NAME --private --source=. --push` 로 한 번에 생성·푸시 가능합니다.
 
-## 배포 (Vercel vs Streamlit)
+## Vercel 배포 (Next.js 앱 — `interview-app`)
 
-- **이 프로젝트는 Streamlit(Python 서버) 앱**입니다. Vercel은 정적 사이트·Next.js·서버리스 함수 위주라 **Streamlit 앱을 그대로 올리기에는 적합하지 않습니다.**
-- **권장: Streamlit Community Cloud** (무료, GitHub 연동)
+이 저장소에는 **Next.js** 앱이 `interview-app` 폴더에 있습니다. Vercel에서 반드시 **Root Directory**를 지정해야 합니다.
+
+1. [Vercel](https://vercel.com) 로그인 후 **Add New** → **Project**에서 이 GitHub 저장소(`gud98305-commits/interview`) 선택.
+2. **Configure Project** 화면에서:
+   - **Root Directory** 옆 **Edit** 클릭 → `interview-app` 입력 후 **Save**.
+   - **Framework Preset**은 `Next.js`로 두면 됩니다.
+3. **Environment Variables**에 필요한 값 추가 (예: `OPENAI_API_KEY` — `.env.example` 참고).
+4. **Deploy** 클릭.
+
+Root Directory를 `interview-app`으로 설정하지 않으면 루트에 `package.json`이 없어 빌드가 실패합니다.
+
+## 배포 (Streamlit — 루트 앱)
+
+- 루트의 **Streamlit(Python) 앱**은 Vercel이 아닌 **Streamlit Community Cloud**에 배포하는 것을 권장합니다.
   1. [share.streamlit.io](https://share.streamlit.io) 접속 후 GitHub 로그인.
   2. **New app** → 이 레포지토리 선택, Branch `main`, Main file path `app.py`.
   3. **Advanced settings**에서 Secrets에 `OPENAI_API_KEY` 추가.
   4. Deploy 후 제공되는 URL로 접속하면 됩니다.
 
-- 그 외 **Railway**, **Render** 등에서도 Python 앱으로 배포 가능합니다 (빌드 명령: `pip install -r requirements.txt`, 실행: `streamlit run app.py --server.port $PORT`).
+- 그 외 **Railway**, **Render** 등에서도 Python 앱으로 배포 가능합니다 (빌드: `pip install -r requirements.txt`, 실행: `streamlit run app.py --server.port $PORT`).
 
 ## 참고
 
