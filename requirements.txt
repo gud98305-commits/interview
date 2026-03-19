@@ -1,0 +1,11 @@
+openai>=1.12.0
+python-dotenv>=1.0.0
+mediapipe>=0.10.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+pyaudio>=0.2.14
+SpeechRecognition>=3.10.0
+pydub>=0.25.1
+requests>=2.31.0
+streamlit>=1.28.0
+streamlit-mic-recorder>=0.0.8
